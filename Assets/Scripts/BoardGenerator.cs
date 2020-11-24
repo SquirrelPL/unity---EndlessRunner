@@ -8,7 +8,7 @@ public class BoardGenerator : MonoBehaviour
     [SerializeField] private float generationDistance = 100f;
     [SerializeField] private float destructionDistance = 20f;
     [SerializeField] private Transform obstaclesParent;
-    [SerializeField] private GameObject obstaclePrefab;
+    [SerializeField] private GameObject[] obstaclePrefab;
     [SerializeField] private List<GameObject> obstacles;
     private float lastZOffset;
     private void Start()
@@ -41,6 +41,6 @@ public class BoardGenerator : MonoBehaviour
             target.position.y,
             zOffset
             );
-        return Instantiate(obstaclePrefab, spawnPosition, Quaternion.identity, obstaclesParent);
+        return Instantiate(obstaclePrefab[Random.Range(0,5)], spawnPosition, Quaternion.identity, obstaclesParent);
     }
 }

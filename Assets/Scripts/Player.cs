@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
     [SerializeField] private int linesCount = 3;
     [SerializeField] private float horizontalStep = 10f;
 
+    public GameObject gameManager;
+
     private int line = 0;
 
     private void Update()
@@ -30,5 +32,13 @@ public class Player : MonoBehaviour
         }
 
         transform.position = new Vector3(line * horizontalStep, transform.position.y, transform.position.z);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "box")
+        {
+            gameManager.GetComponent<GameManagerScript>().hit();
+        }
     }
 }
